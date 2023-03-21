@@ -1,0 +1,8 @@
+definitions:
+  Answer:
+    type: object
+    properties:
+      answer:
+        type: string
+      isCorrect:
+        type: boolean

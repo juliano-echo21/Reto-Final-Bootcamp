@@ -1,0 +1,71 @@
+/api/v1/form/getquestions:
+  get:
+    tags:
+      - Form
+    security: []
+    description: List Forms
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/Form"
+            example:
+              {
+                "state": true,
+                "questions":
+                  [
+                    {
+                      "id": 2,
+                      "question": "que dia es hoy?",
+                      "state": true,
+                      "answers": [],
+                    },
+                    {
+                      "id": 3,
+                      "question": "qué horas son?",
+                      "state": true,
+                      "answers": [],
+                    },
+                    {
+                      "id": 7,
+                      "question": "que dia es ayer?",
+                      "state": true,
+                      "answers": [],
+                    },
+                    {
+                      "id": 9,
+                      "question": "que dia fue el lunes?",
+                      "state": true,
+                      "answers":
+                        [
+                          {
+                            "id": 4,
+                            "answer": "esta1",
+                            "is_correct": true,
+                            "question_id": 9,
+                            "state": true,
+                          },
+                          {
+                            "id": 5,
+                            "answer": "esta2",
+                            "is_correct": false,
+                            "question_id": 9,
+                            "state": true,
+                          },
+                          {
+                            "id": 6,
+                            "answer": "esta3",
+                            "is_correct": false,
+                            "question_id": 9,
+                            "state": true,
+                          },
+                        ],
+                    },
+                  ],
+              }

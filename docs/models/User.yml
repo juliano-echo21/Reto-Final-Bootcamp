@@ -1,0 +1,28 @@
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: number
+      firstName:
+        type: string
+      secondName:
+        type: string
+      surname:
+        type: string
+      secondSurName:
+        type: string
+      documentNumber:
+        type: string
+      typeDocument:
+        type: number
+      password:
+        type: string
+      email:
+        type: string
+      roleId:
+        type: number
+      phone:
+        type: string
+      state:
+        type: boolean

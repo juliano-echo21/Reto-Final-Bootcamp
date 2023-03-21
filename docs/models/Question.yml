@@ -1,0 +1,10 @@
+definitions:
+  Question:
+    type: object
+    properties:
+      id:
+        type: number
+      question:
+        type: string
+      state:
+        type: boolean

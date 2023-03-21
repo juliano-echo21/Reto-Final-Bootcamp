@@ -1,0 +1,20 @@
+/api/v1/questions/deleteQuestion/{id}:
+  delete:
+    tags:
+      - Question
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    security: []
+    description: Delete question
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#/definitions/Question"
+    responses:
+      200:
+        description: Petición exitosa

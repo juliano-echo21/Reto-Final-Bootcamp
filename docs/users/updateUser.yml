@@ -1,0 +1,53 @@
+/api/v1/user/update/{id}:
+  put:
+    tags:
+      - User
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    security: []
+    description: Update user
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#/definitions/User"
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                User:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    secondName:
+                      type: string
+                    surname:
+                      type: string
+                    secondSurName:
+                      type: string
+                    documentNumber:
+                      type: string
+                    typeDocument:
+                      type: number
+                    email:
+                      type: string
+                    roleId:
+                      type: number
+                    phone:
+                      type: string
+                    state:
+                      type: boolean
+              msj:
+                type: string
+                description: Mensaje de respuesta
+            example:
+              { "state": true, "message": "Se ha actualizado correctamente" }

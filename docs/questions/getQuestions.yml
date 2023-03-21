@@ -1,0 +1,43 @@
+/api/v1/questions/getQuestions:
+  get:
+    tags:
+      - Question
+    security: []
+    description: List Questions
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/Question"
+            example:
+              {
+                "state": true,
+                "questions":
+                  [
+                    {
+                      "id": 12,
+                      "question": "quien gana la copa?",
+                      "state": true,
+                    },
+                    { "id": 11, "question": "quien ganara?", "state": true },
+                    {
+                      "id": 10,
+                      "question": "quien gana el mundial",
+                      "state": true,
+                    },
+                    {
+                      "id": 9,
+                      "question": "que dia fue el lunes?",
+                      "state": true,
+                    },
+                    { "id": 7, "question": "que dia es ayer?", "state": true },
+                    { "id": 3, "question": "qué horas son?", "state": true },
+                    { "id": 2, "question": "que dia es hoy?", "state": true },
+                  ],
+              }

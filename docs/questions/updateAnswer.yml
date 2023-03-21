@@ -1,0 +1,36 @@
+/api/v1/questions/updateAnswer/{id}:
+  put:
+    tags:
+      - Answer
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    security: []
+    description: Update Answer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#/definitions/Answer"
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Answer:
+                  type: object
+                  properties:
+                    answer:
+                      type: string
+                    isCorrect:
+                      type: boolean
+              msj:
+                type: string
+                description: Mensaje de respuesta
+            example: { "state": true, "message": "Opción editada con exito" }

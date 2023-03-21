@@ -1,0 +1,38 @@
+/api/v1/user/getUser/{id}:
+  get:
+    tags:
+      - User
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    security: []
+    description: List Users
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/User"
+            example:
+              {
+                "id": 4,
+                "first_name": "julio",
+                "second_name": "david",
+                "surname": "clari",
+                "second_sur_name": "nete",
+                "document_number": "12121212",
+                "type_document": 1,
+                "password": "$2a$10$Wan5agLEUnIU1mergq1lCuXsADYaRe3fxhjTfwZiFugWbmcKE44Ki",
+                "role_id": 1,
+                "phone": "121212121",
+                "email": "juliooo21@gmail.com",
+                "state": true,
+              }

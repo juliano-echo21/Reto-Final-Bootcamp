@@ -1,0 +1,52 @@
+/api/v1/user/getUsers:
+  get:
+    tags:
+      - User
+    security: []
+    description: List Users
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/User"
+            example:
+              {
+                "state": true,
+                "users":
+                  [
+                    {
+                      "id": 3,
+                      "first_name": "michael",
+                      "second_name": "julian",
+                      "surname": "cruz",
+                      "second_sur_name": "casallas",
+                      "document_number": "80808080",
+                      "type_document": 1,
+                      "password": "$2a$10$1YLRttbjMAPUBKIpo8/.mOy5Zh/1Boc6yi1A/4/B.4neR0VFlCLzO",
+                      "role_id": 1,
+                      "phone": "32123122314",
+                      "email": "juls@gmail.co",
+                      "state": true,
+                    },
+                    {
+                      "id": 2,
+                      "first_name": "michael",
+                      "second_name": "julian",
+                      "surname": "cruz",
+                      "second_sur_name": "casallas",
+                      "document_number": "90909090",
+                      "type_document": 1,
+                      "password": "$2a$10$v9Y49aKwiB.CwfD2/BeQi.oehe64h1CLIZ0VkL/5GFN3P6eDm6JkW",
+                      "role_id": 1,
+                      "phone": "32123122314",
+                      "email": "juls@gmail.co",
+                      "state": true,
+                    },
+                  ],
+              }

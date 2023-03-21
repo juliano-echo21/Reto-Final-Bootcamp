@@ -1,0 +1,52 @@
+/api/v1/questions/getOptions/{id}:
+  get:
+    tags:
+      - Question
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    security: []
+    description: List Questions
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/Question"
+            example:
+              {
+                "state": true,
+                "message": "Listado de opciones",
+                "options":
+                  [
+                    {
+                      "id": 14,
+                      "answer": "esta1",
+                      "is_correct": true,
+                      "question_id": 12,
+                      "state": true,
+                    },
+                    {
+                      "id": 15,
+                      "answer": "esta2",
+                      "is_correct": false,
+                      "question_id": 12,
+                      "state": true,
+                    },
+                    {
+                      "id": 16,
+                      "answer": "esta3",
+                      "is_correct": false,
+                      "question_id": 12,
+                      "state": true,
+                    },
+                  ],
+              }

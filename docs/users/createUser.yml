@@ -1,0 +1,49 @@
+/api/v1/user/create:
+  post:
+    tags:
+      - User
+    security: []
+    description: Create user
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#/definitions/User"
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                User:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    secondName:
+                      type: string
+                    surname:
+                      type: string
+                    secondSurName:
+                      type: string
+                    documentNumber:
+                      type: string
+                    typeDocument:
+                      type: number
+                    password:
+                      type: string
+                    email:
+                      type: string
+                    roleId:
+                      type: number
+                    phone:
+                      type: string
+                    state:
+                      type: boolean
+              msj:
+                type: string
+                description: Mensaje de respuesta
+            example:
+              { "state": true, "message": "Estudiante creado correctamente" }

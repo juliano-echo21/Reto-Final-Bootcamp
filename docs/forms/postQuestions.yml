@@ -1,0 +1,31 @@
+/api/v1/form/postquestions:
+  post:
+    tags:
+      - Form
+    security: []
+    description: Post Answers
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#/definitions/Form"
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Form:
+                  type: object
+                  properties:
+                    studentId:
+                      type: number
+                    answers:
+                      type: string
+              msj:
+                type: string
+                description: Mensaje de respuesta
+            example:
+              { "state": true, "message": "Respuestas almacenadas con exito" }

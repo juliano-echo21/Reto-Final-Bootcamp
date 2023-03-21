@@ -1,0 +1,38 @@
+/api/v1/user/login:
+  post:
+    tags:
+      - LoginUser
+    security: []
+    description: Login user
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "#/definitions/LoginUser"
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                User:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+              msj:
+                type: string
+                description: Mensaje de respuesta
+            example:
+              {
+                "token": "eyUzI1NiIsInR9.eyJuYW1lIjoibWljaGFlbCIsImlkIjoyLCJpYXQiOjE2NzkzNzE4MDgsImV4cCI6MTY3OTM3MjQwOH0.kihGOGvEJS5F7hOwMyqQ-MJwdpzURBP5IiFCllYz-Lk",
+                "state": true,
+                "id": 2,
+                "name": "michael julian casallas",
+                "role": 1,
+                "message": "Ingreso exitoso",
+              }
