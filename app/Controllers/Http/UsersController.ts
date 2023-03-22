@@ -109,12 +109,10 @@ export default class UsersController {
 
   public async generarToken(payload) {
     const options = {
-      expiresIn: "10 mins",
+      expiresIn: "15 mins",
     };
     return jwt.sign(payload, Env.get("JWT_SECRET_KEY"), options);
   }
-
-  public async store({}: HttpContextContract) {}
 
   public async show({ request, response }: HttpContextContract) {
     // const { filter, id } = request.all();
@@ -136,8 +134,6 @@ export default class UsersController {
       });
     }
   }
-
-  public async edit({}: HttpContextContract) {}
 
   public async update({ request, response }: HttpContextContract) {
     const id = request.param("id");
@@ -179,8 +175,6 @@ export default class UsersController {
     }
   }
 
-  public async destroy({}: HttpContextContract) {}
-
   public async checkUser(documentNumber) {
     const user = await User.findBy("documentNumber", documentNumber);
     console.log(user, "from check");
@@ -190,8 +184,28 @@ export default class UsersController {
 
   public async checkUserById(id) {
     const user = await User.findBy("id", id);
-    console.log(user, "from check");
-    console.log(typeof id, "from check");
+    // console.log(user, "from check");
+    // console.log(typeof id, "from check");
     return user;
+  }
+
+  public async verifyToken(authorizationHeader) {
+    let token = authorizationHeader.split(" ")[1];
+    token = jwt.verify(token, Env.get("JWT_SECRET_KEY"), (error) => {
+      if (error) {
+        throw new Error("the token has expired");
+      }
+    });
+
+    return token;
+  }
+
+  public obtenerPayload(authorizationHeader: string) {
+    let token = authorizationHeader.split(" ")[1];
+    const payload = jwt.verify(token, Env.get("JWT_SECRET_KEY"), {
+      complete: true,
+    }).payload;
+    console.log(payload);
+    return payload;
   }
 }

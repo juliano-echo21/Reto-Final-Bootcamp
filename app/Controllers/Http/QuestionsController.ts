@@ -50,11 +50,20 @@ export default class QuestionsController {
   }
 
   public async delete({ request, response }: HttpContextContract) {
+    // validar si tiene respuestas
+    // poner estado en falso
     const id = request.param("id");
     try {
       const question = await Question.find(id);
-      console.log(Boolean(question), "questiondel");
-      if (question) {
+      const answers = await Answer.findBy("question_id", id);
+      // console.log(answers);
+      if (answers && question) {
+        question.state = false;
+        await question.save();
+        response
+          .status(200)
+          .json({ state: true, message: "Se ha cambiado el state a false" });
+      } else if (question && !answers) {
         await question.delete();
         response
           .status(200)
@@ -136,8 +145,6 @@ export default class QuestionsController {
       });
     }
   }
-
-  public async edit({}: HttpContextContract) {}
 
   public async getQuestionId(question) {
     const questionToReturn = await Question.findBy("question", question);

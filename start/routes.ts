@@ -28,9 +28,13 @@ Route.group(() => {
   Route.group(() => {
     Route.post("/create", "UsersController.create");
     Route.post("/login", "UsersController.login");
-    Route.get("/getUsers", "UsersController.show");
-    Route.put("/update/:id", "UsersController.update");
-    Route.get("/getUser/:id", "UsersController.showUser");
+    Route.group(() => {
+      Route.get("/getUsers", "UsersController.show");
+      Route.put("/update/:id", "UsersController.update");
+      Route.get("/getUser/:id", "UsersController.showUser");
+    })
+      .middleware("auth")
+      .middleware("userPermissions");
   }).prefix("/user");
   Route.group(() => {
     Route.post("/create", "QuestionsController.create");
@@ -39,9 +43,15 @@ Route.group(() => {
     Route.put("/updateQuestion/:id", "QuestionsController.update");
     Route.put("/updateAnswer/:id", "QuestionsController.updateAnswer");
     Route.get("/getOptions/:id", "QuestionsController.getOptions");
-  }).prefix("/questions");
+  })
+    .prefix("/questions")
+    .middleware("auth")
+    .middleware("userPermissions");
   Route.group(() => {
     Route.get("/getquestions", "FormsController.show");
     Route.post("/postquestions", "FormsController.create");
-  }).prefix("/form");
+  })
+    .prefix("/form")
+    .middleware("auth")
+    .middleware("userPermissions");
 }).prefix("/api/v1");
